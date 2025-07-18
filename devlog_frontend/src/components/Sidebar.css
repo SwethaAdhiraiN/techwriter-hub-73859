@@ -1,0 +1,30 @@
+.sidebar {
+  background: var(--bg-secondary, #e0f7ef);
+  padding: 1.7rem 1.3rem;
+  border-radius: 11px;
+  box-shadow: 0 1px 3px 0 rgba(16, 185, 129, 0.05);
+}
+
+.sidebar h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--primary, #12e93b);
+}
+
+.tag-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.tag-empty {
+  color: #888;
+}
+.tag-list li {
+  padding: 4px 0;
+  cursor: pointer;
+  transition: color 0.14s;
+}
+.tag-list li.tag-selected {
+  color: #34d399;
+  font-weight: bold;
+}

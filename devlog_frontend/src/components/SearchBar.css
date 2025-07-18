@@ -1,0 +1,12 @@
+.searchbar {
+  margin: 25px 0 19px 0;
+  width: 100%;
+  max-width: 500px;
+}
+.searchbar-input {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--accent, #34d399);
+  font-size: 1.09em;
+  padding: 11px 13px;
+}

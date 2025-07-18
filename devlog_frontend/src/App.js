@@ -1,48 +1,58 @@
-import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState, lazy, Suspense } from "react";
+import { BrowserRouter as Router, Route, Routes, Navigate, Outlet } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import { AuthProvider, useAuth } from "./context/AuthContext";
+import ThemeProvider from "./context/ThemeContext";
+import LoadingSpinner from "./components/LoadingSpinner";
+import "./App.css";
 
-// PUBLIC_INTERFACE
+// Lazy loaded pages for code splitting
+const Home = lazy(() => import("./pages/Home"));
+const PostDetail = lazy(() => import("./pages/PostDetail"));
+const Editor = lazy(() => import("./pages/Editor"));
+const Login = lazy(() => import("./pages/Login"));
+const Register = lazy(() => import("./pages/Register"));
+const Profile = lazy(() => import("./pages/Profile"));
+const Settings = lazy(() => import("./pages/Settings"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+
+// Route guard for authenticated routes
+function PrivateRoute() {
+  const { user, loading } = useAuth();
+  if (loading) return <LoadingSpinner />;
+  return user ? <Outlet /> : <Navigate to="/login" />;
+}
+
 function App() {
-  const [theme, setTheme] = useState('light');
-
-  // Effect to apply theme to document element
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-  }, [theme]);
-
-  // PUBLIC_INTERFACE
-  const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
-  };
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <button 
-          className="theme-toggle" 
-          onClick={toggleTheme}
-          aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-        >
-          {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
-        </button>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          Current theme: <strong>{theme}</strong>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider>
+      <AuthProvider>
+        <Router>
+          <div className="app-container">
+            <Navbar />
+            <main className="main-content">
+              <Suspense fallback={<LoadingSpinner />}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/posts/:id" element={<PostDetail />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route element={<PrivateRoute />}>
+                    <Route path="/editor/:id" element={<Editor />} />
+                    <Route path="/editor" element={<Editor />} />
+                    <Route path="/profile/:username" element={<Profile />} />
+                    <Route path="/settings" element={<Settings />} />
+                  </Route>
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </Suspense>
+            </main>
+            <Footer />
+          </div>
+        </Router>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 

@@ -1,0 +1,15 @@
+.loading-spinner__wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 0 2rem 0;
+}
+.loading-spinner {
+  border: 6px solid #e5e7eb;
+  border-top: 6px solid var(--accent, #34d399);
+  border-radius: 50%;
+  width: 40px; height: 40px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  100% { transform: rotate(360deg);}
+}

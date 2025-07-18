@@ -1,0 +1,37 @@
+.markdown-editor__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.markdown-editor {
+  border-radius: 7px;
+  padding: 12px 13px;
+  border: 1px solid #e5e7eb;
+  font-size: 1.12em;
+  font-family: "JetBrains Mono", monospace;
+  resize: vertical;
+}
+
+.markdown-preview__container {
+  margin-top: 7px;
+}
+
+.markdown-preview {
+  border: 1px solid #e5e7eb;
+  border-radius: 7px;
+  padding: 13px;
+  background: #f4f9fb;
+  min-height: 70px;
+  color: #223;
+  font-size: 1.07em;
+}
+.markdown-preview pre {
+  font-size: 0.97em;
+  background: #21272b;
+  color: #78faad;
+  border-radius: 6px;
+  padding: 4px 7px;
+  margin: 3px 0 3px 0;
+  overflow-x: auto;
+}

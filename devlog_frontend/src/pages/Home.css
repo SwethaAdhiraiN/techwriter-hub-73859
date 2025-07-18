@@ -1,0 +1,42 @@
+.home-page {
+  display: flex;
+  min-height: 80vh;
+  gap: 24px;
+  width: 100%;
+  max-width: 1220px;
+  margin: 22px auto;
+}
+.home-sidebar {
+  flex: 0 1 210px;
+}
+.home-main {
+  flex: 1 1 0;
+  min-width: 0;
+}
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+}
+.no-posts {
+  color: var(--text-secondary, #bbb);
+  margin-top: 2rem;
+  font-size: 1.1em;
+}
+.main-loading {
+  padding: 2rem 0;
+  color: var(--accent, #34d399);
+  font-size: 1.13em;
+}
+@media (max-width: 900px) {
+  .home-page {
+    flex-direction: column;
+    padding: 0 8px;
+  }
+  .home-sidebar {
+    order: 2;
+    margin-top: 40px;
+    flex-basis: auto;
+  }
+}

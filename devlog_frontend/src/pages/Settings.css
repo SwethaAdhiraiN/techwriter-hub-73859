@@ -1,0 +1,48 @@
+.settings-page {
+  max-width: 480px;
+  margin: 2rem auto;
+}
+.settings-form {
+  background: var(--bg-secondary, #f1fbff);
+  border-radius: 9px;
+  border: 1px solid var(--border-color, #e5e7eb);
+  padding: 2.1rem 2.2rem 1.3rem 2.2rem;
+}
+.settings-form label {
+  font-weight: 500;
+  color: var(--primary, #12e93b);
+}
+.settings-success {
+  color: #1bcb5d;
+  background: #daf7e5;
+  padding: 7px 13px;
+  border-radius: 7px;
+  margin-bottom: 0.76rem;
+}
+.settings-error {
+  color: #de1e7e;
+  background: #fff4f8;
+  padding: 7px 13px;
+  border-radius: 7px;
+  margin-bottom: 0.76rem;
+}
+.settings-form textarea {
+  width: 100%;
+  border-radius: 7px;
+  border: 1px solid #d9e7e8;
+  padding: 10px 10px;
+  font-size: 1em;
+  background: #fff;
+}
+.settings-btn {
+  margin-top: 20px;
+  background: var(--accent, #34d399);
+  color: #fff;
+  font-weight: 600;
+  padding: 11px 0;
+  border-radius: 5px;
+  width: 120px;
+  border: none;
+  font-size: 1.08em;
+  cursor: pointer;
+}
